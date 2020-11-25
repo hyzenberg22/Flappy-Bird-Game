@@ -29,3 +29,5 @@ if __name__ == '__main__':
     # This is the main body of the function
     pygame.init() #inicilize the pygame function.
     FPSCLOCK = pygame.time.clock()
+    pygame.display.set_caption('Flappy Bird By Shubhajit')
+
