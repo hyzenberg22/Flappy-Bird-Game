@@ -81,9 +81,19 @@ def maingame():
     newPipe2 = GetRandomPipe()
 
     # This is the list of the upper pipes 
-    
+    upperpipes = [
+        {'x':SCREENWIDTH+200, 'y': newPipe1[0]['y']},
+        {'x':SCREENWIDTH+200+(SCREENWIDTH/2), 'y': newPipe2[1]['y']}
+    ]
 
+    # this is the list for teh lower pipe
+    lowerpipes = [
+        {'x':SCREENWIDTH+200, 'y': newPipe1[0]['y']},
+        {'x':SCREENWIDTH+200+(SCREENWIDTH/2), 'y': newPipe2[1]['y']}
+    ]
 
+    # now this is the time to generate the velosity of the pipes
+    pipeVelo
 
 
 
