@@ -19,6 +19,7 @@ PIPE = 'Gallary/images/bamboo.png'
 
 # Definig the functions
 
+# This is the function for dispalying the welcome screen 
 def welcomescreen():
     """
     This is the Welcome screen shows to the User.
@@ -42,7 +43,7 @@ def welcomescreen():
             elif event.type == KEYDOWN and (event.key == K_SPACE or event.key == K_UP ):
                 return
             else:
-                # now we will bilt the images it takes images and cordianates 
+                # now we will bilt the images it takes images and cordianates and shows to the screen
                 SCREEN.blit(GAME_IMAGES['background'], (0, 0))
                 SCREEN.blit(GAME_IMAGES['player'], (playerx, playery))
                 SCREEN.blit(GAME_IMAGES['message'], (messagex, messagey))
@@ -50,9 +51,37 @@ def welcomescreen():
                 pygame.display.update()
                 FPSCLOCK.tick(FPS)
 
+# This is the function for generating the random pipes on the screen 
+def GetRandomPipe():
+    # generatin the postion of the pipes on the screen (straight and 180 degree rotated )
+    pipeHight = GAME_IMAGES['pipe'][0].get_hight()
+    offSet = SCREENHIGHT/3
+    y2 = offSet + random.randrange(0, int(SCREENHIGHT - GAME_IMAGES['base'].get_hight() - (1.2 * offSet)))
+    pipex = SCREENWIDTH + 10
+    y1 = pipeHight - y2 + offSet
+    # This is the list for the pipe cordinates generating by the pygame.
+    pipe = [
+        {'x': pipex, 'y': -y1 }, # This is for the upper pipe 
+        {'x': pipex, 'y': y2 } # This is for the lower pipe
+    ]
+    return pipe
+    
 
 
+# This is the function for the main game loop after pressing the arrow or space key
 
+def maingame():
+    score = 0
+    playerx = int(SCREENWIDTH/5)
+    playery = int(SCREENWIDTH/2)
+    basex = 0
+
+    # Creat the random pipes for the bliting  on the screen
+    newPipe1 = GetRandomPipe()
+    newPipe2 = GetRandomPipe()
+
+    # This is the list of the upper pipes 
+    
 
 
 
