@@ -4,25 +4,25 @@ import pygame # for the pygame module
 from pygame.locals import * # Pygame special Variables
 
 
-# Declearing the Global Variables
+# Declearing the Global Variables used inthe ga,e 
 
-FPS = 32
-SCREENWIDTH = 289
-SCREENHIGHT = 511
-SCREEN = pygame.display.set_mode((SCREENWIDTH, SCREENHIGHT))
-GROUNDY = SCREENHIGHT * 0.8
+FPS = 32 # The Fps of the game for the image rendering 
+SCREENWIDTH = 289 # set the width of the game screen 
+SCREENHIGHT = 511 # set the hight of the game screen 
+SCREEN = pygame.display.set_mode((SCREENWIDTH, SCREENHIGHT)) # setting a basic screen in the pygame 
+GROUNDY = SCREENHIGHT * 0.8 # set the ground image according to the screen hight 
 GAME_IMAGES = {} # All the game images in the Gallary folder 
 GAME_SOUNDS = {} # All the Audio of the game in the gallary folder 
-PLAYER = 'Gallary/images/bird.png'
-BACKGROUND = 'Gallary/images/background.png'
-PIPE = 'Gallary/images/bamboo.png'
+PLAYER = 'Gallary/images/bird.png' # Relative path of the player 
+BACKGROUND = 'Gallary/images/background.png' # Relative path of the background 
+PIPE = 'Gallary/images/bamboo.png' # Relativa path of the pipe image 
 
-# Definig the functions
+# Defining the functions
 
 # This is the function for dispalying the welcome screen 
 def welcomescreen():
     """
-    This is the Welcome screen shows to the User.
+    This is the Welcome screen shows to the User untill he/she press a button.
     """
     playerx = int(SCREENWIDTH / 5) # x cordinate of the player
     playery = int((SCREENHIGHT - GAME_IMAGES['player'].get_height()) / 2) # y cordinate of the bird, and to center the image. 
@@ -43,17 +43,20 @@ def welcomescreen():
             elif event.type == KEYDOWN and (event.key == K_SPACE or event.key == K_UP ):
                 return
             else:
-                # now we will bilt the images it takes images and cordianates and shows to the screen
+                # it will shows the Game welcome screen untill the defined keys are pressed 
+                # Bliting means setting the Images according to the screen hight and weidth with the help of X and Y Cordinates 
                 SCREEN.blit(GAME_IMAGES['background'], (0, 0))
                 SCREEN.blit(GAME_IMAGES['player'], (playerx, playery))
                 SCREEN.blit(GAME_IMAGES['message'], (messagex, messagey))
                 SCREEN.blit(GAME_IMAGES['base'], (basex, GROUNDY))
-                pygame.display.update()
-                FPSCLOCK.tick(FPS)
+                pygame.display.update() # This function will shows the actual bliting in the pygame, with the help of the function mentioned above 
+                FPSCLOCK.tick(FPS) # This is the Fps controller of the screen FPS == Golbal variable we maintioned
 
 # This is the function for generating the random pipes on the screen 
 def GetRandomPipe():
-    # generatin the postion of the pipes on the screen (straight and 180 degree rotated )
+    # generating the postion of the pipes on the screen (straight and 180 degree rotated )
+    # Returns a dictionary with the random cordiantes of the pipes both straight and rotated 
+    
     pipeHight = GAME_IMAGES['pipe'][0].get_hight()
     offSet = SCREENHIGHT/3
     y2 = offSet + random.randrange(0, int(SCREENHIGHT - GAME_IMAGES['base'].get_hight() - (1.2 * offSet)))
@@ -64,6 +67,7 @@ def GetRandomPipe():
         {'x': pipex, 'y': -y1 }, # This is for the upper pipe 
         {'x': pipex, 'y': y2 } # This is for the lower pipe
     ]
+    # Returing the dictionary of the function 
     return pipe
     
 
@@ -71,12 +75,12 @@ def GetRandomPipe():
 # This is the function for the main game loop after pressing the arrow or space key
 
 def maingame():
-    score = 0
-    playerx = int(SCREENWIDTH/5)
-    playery = int(SCREENWIDTH/2)
+    score = 0 # Inicilize the score of the game 
+    playerx = int(SCREENWIDTH/5) # setting the palyer position on the Game Screen 
+    playery = int(SCREENWIDTH/2) # Settindg the Y position of the screen 
     basex = 0
 
-    # Creat the random pipes for the bliting  on the screen
+    # Creat the random pipes for the bliting  on the screen both straight and 180 digree pipes 
     newPipe1 = GetRandomPipe()
     newPipe2 = GetRandomPipe()
 
