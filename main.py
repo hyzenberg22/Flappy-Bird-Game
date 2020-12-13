@@ -57,17 +57,18 @@ def GetRandomPipe():
     # generating the postion of the pipes on the screen (straight and 180 degree rotated )
     # Returns a dictionary with the random cordiantes of the pipes both straight and rotated 
     
-    pipeHight = GAME_IMAGES['pipe'][0].get_hight()
-    offSet = SCREENHIGHT/3
+    pipeHight = GAME_IMAGES['pipe'][0].get_hight() # getting the hight of the pipe image
+    offSet = SCREENHIGHT/3 
+    # Off set is a gap between the pipes by which the bird can flap 
     y2 = offSet + random.randrange(0, int(SCREENHIGHT - GAME_IMAGES['base'].get_hight() - (1.2 * offSet)))
     pipex = SCREENWIDTH + 10
     y1 = pipeHight - y2 + offSet
     # This is the list for the pipe cordinates generating by the pygame.
     pipe = [
-        {'x': pipex, 'y': -y1 }, # This is for the upper pipe 
+        {'x': pipex, 'y': -y1 }, # This is for the upper pipe so the value of the Y cordinate is Negetive.
         {'x': pipex, 'y': y2 } # This is for the lower pipe
     ]
-    # Returing the dictionary of the function 
+    # Returing the dictionary of the function A
     return pipe
     
 
@@ -96,8 +97,24 @@ def maingame():
         {'x':SCREENWIDTH+200+(SCREENWIDTH/2), 'y': newPipe2[1]['y']}
     ]
 
-    # now this is the time to generate the velosity of the pipes
-    pipeVelo
+    # now this is the time to generate the velosity of the pipes and the palyer of the Game 
+    pipeVelX = -4
+    
+    palyerVelY = -9
+    playerMaxVelY = 10
+    playerMinVelY = -8
+    playerAccY = 1
+    
+    
+    playerFlappedAccv = -8 # Velosity while Flapping 
+    playerFlapped = False  # It is true while the bird is Flapping 
+    
+    
+    while True:
+        
+    
+    
+    
 
 
 
