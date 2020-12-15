@@ -98,8 +98,10 @@ def maingame():
     ]
 
     # now this is the time to generate the velosity of the pipes and the palyer of the Game 
-    pipeVelX = -4
+    pipeVelX = -4 # This is for the palyer velosity
     
+
+    # Defining the pipe velosity when moving to the direction.
     palyerVelY = -9
     playerMaxVelY = 10
     playerMinVelY = -8
@@ -109,8 +111,15 @@ def maingame():
     playerFlappedAccv = -8 # Velosity while Flapping 
     playerFlapped = False  # It is true while the bird is Flapping 
     
-    
+    # This is the main game loop for playing the events
     while True:
+        for event in pygame.event.get():
+            if event.type == QUIT or (event.type == KEYDOWN and event.key == K_ESCAPE):
+                pygame.quit()
+                sys.exit()
+            if event.type == KEYDOWN and (event.key == K_SPACE or event.type == K_up):
+                if (player>0):
+
         
     
     
