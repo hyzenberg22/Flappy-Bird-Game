@@ -111,7 +111,7 @@ def maingame():
     playerFlappedAccv = -8 # Velosity while Flapping 
     playerFlapped = False  # It is true while the bird is Flapping 
     
-    # This is the main game loop for playing the events
+    # This is the main game loop for playing the events of the game 
     while True:
         for event in pygame.event.get():
             if event.type == QUIT or (event.type == KEYDOWN and event.key == K_ESCAPE):
